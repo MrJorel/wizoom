@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oferta de Aniversário — Wizoom Play 7 Anos</title>
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #161b24;
+    --surface2: #1e2533;
+    --border: #2a3347;
+    --orange: #f97316;
+    --orange2: #fb923c;
+    --green: #34d399;
+    --amber: #fbbf24;
+    --red: #f87171;
+    --blue: #4f8ef7;
+    --text: #e8edf5;
+    --muted: #7a8599;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    padding: 48px 24px;
+  }
+  .container { max-width: 1000px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 52px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .header h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
+  .header h1 span { color: var(--orange); }
+  .header p { font-size: 14px; color: var(--muted); }
+  .timeline-pills {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin-top: 28px;
+  }
+  .pill {
+    padding: 10px 24px;
+    font-size: 12px;
+    font-weight: 700;
+    border: 1px solid var(--border);
+  }
+  .pill:first-child { border-radius: 8px 0 0 8px; }
+  .pill:last-child { border-radius: 0 8px 8px 0; }
+  .pill.p-live { background: rgba(249,115,22,0.12); color: var(--orange); border-color: rgba(249,115,22,0.3); }
+  .pill.p-price { background: rgba(52,211,153,0.1); color: var(--green); border-color: rgba(52,211,153,0.25); }
+  .pill-arrow { display: flex; align-items: center; padding: 0 4px; color: var(--muted); font-size: 14px; border: 1px solid var(--border); border-left: none; }
+
+  /* Section */
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .section { margin-bottom: 52px; }
+
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+  /* Callout */
+  .callout {
+    background: linear-gradient(135deg, rgba(249,115,22,0.07), rgba(251,146,60,0.05));
+    border: 1px solid rgba(249,115,22,0.2);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: #ddd0c8;
+    line-height: 1.6;
+  }
+  .callout strong { color: var(--text); }
+
+  /* Tags */
+  .tag-sm {
+    display: inline-block;
+    padding: 1px 8px;
+    border-radius: 99px;
+    font-size: 10px;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+  .tag-orange { background: rgba(249,115,22,0.15); color: var(--orange); }
+  .tag-green { background: rgba(52,211,153,0.15); color: var(--green); }
+  .tag-amber { background: rgba(251,191,36,0.15); color: var(--amber); }
+  .tag-red { background: rgba(248,113,113,0.15); color: var(--red); }
+  .tag-blue { background: rgba(79,142,247,0.15); color: var(--blue); }
+
+  /* Price grid */
+  .price-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .price-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    text-align: center;
+  }
+  .price-card.main {
+    border-color: rgba(249,115,22,0.4);
+    background: linear-gradient(135deg, rgba(249,115,22,0.07), rgba(249,115,22,0.03));
+  }
+  .price-card .plabel { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .price-card .pvalue { font-size: 36px; font-weight: 900; line-height: 1; }
+  .price-card.main .pvalue { color: var(--orange); }
+  .price-card .pnote { font-size: 12px; color: var(--muted); margin-top: 8px; }
+  .price-card.main .pnote { color: rgba(249,115,22,0.7); }
+
+  .alert-bar {
+    background: rgba(249,115,22,0.08);
+    border: 1px solid rgba(249,115,22,0.25);
+    border-radius: 8px;
+    padding: 12px 18px;
+    font-size: 13px;
+    color: var(--orange);
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  /* Course list */
+  .course-list { display: flex; flex-direction: column; }
+  .course-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 12px;
+  }
+  .course-item:last-child { border-bottom: none; }
+  .ci-num { font-size: 11px; color: var(--muted); min-width: 22px; font-weight: 700; }
+  .ci-name { flex: 1; font-size: 13px; color: var(--text); }
+  .ci-price { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+  /* Value summary */
+  .value-table {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  .vrow {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 18px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+  }
+  .vrow:last-child { border-bottom: none; }
+  .vrow.vtotal { background: rgba(52,211,153,0.07); font-weight: 700; font-size: 14px; }
+  .vrow.vtotal .v { color: var(--green); }
+  .vrow.vprice { background: rgba(249,115,22,0.08); font-weight: 700; font-size: 14px; }
+  .vrow.vprice .v { color: var(--orange); }
+
+  /* Cards */
+  .card-list { display: flex; flex-direction: column; gap: 10px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .card-name { font-size: 14px; }
+  .card-value { font-size: 13px; color: var(--muted); white-space: nowrap; }
+
+  /* Tsunami */
+  .tsunami-note {
+    font-size: 12px;
+    color: var(--orange);
+    background: rgba(249,115,22,0.07);
+    border: 1px solid rgba(249,115,22,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+  }
+  .tsunami-list { display: flex; flex-direction: column; gap: 12px; }
+  .tsunami-item {
+    display: flex;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    align-items: flex-start;
+  }
+  .tbadge {
+    color: #000;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 99px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .tbadge.t10 { background: var(--orange); }
+  .tbadge.t50 { background: var(--amber); }
+  .tbadge.t100 { background: var(--green); color: #0d1a10; }
+  .tcontent .ttitle { font-size: 14px; font-weight: 700; }
+  .tcontent .tdesc { font-size: 13px; color: var(--muted); margin-top: 3px; }
+
+  /* Garantias */
+  .garantia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .gcard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .gcard .gtitle { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 8px; }
+  .gcard .gdesc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+  /* Checkout */
+  .checkout-group { margin-bottom: 24px; }
+  .checkout-group:last-child { margin-bottom: 0; }
+  .group-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .co-list { display: flex; flex-direction: column; gap: 8px; }
+  .co-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .co-item.main { border-color: rgba(249,115,22,0.35); }
+  .co-desc { font-size: 13px; font-weight: 700; color: var(--text); }
+  .co-item.main .co-desc { color: var(--orange); }
+  .co-link {
+    font-size: 11px;
+    color: var(--orange);
+    word-break: break-all;
+    opacity: 0.75;
+    text-decoration: none;
+  }
+  .co-link:hover { opacity: 1; text-decoration: underline; }
+  .copy-btn {
+    align-self: flex-start;
+    background: var(--orange);
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    margin-top: 2px;
+  }
+  .copy-btn:hover { opacity: 0.85; }
+  .copy-btn.copied { background: var(--green); color: #0d1a10; }
+
+  /* Objections */
+  .obj-list { display: flex; flex-direction: column; gap: 12px; }
+  .obj-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .obj-q {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 8px;
+    border-left: 3px solid var(--border);
+    padding-left: 12px;
+  }
+  .obj-a { font-size: 13px; color: var(--text); line-height: 1.55; }
+
+  /* Suporte */
+  .sup-list { display: flex; flex-direction: column; gap: 10px; }
+  .sup-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .sup-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 5px; }
+  .sup-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    body { padding: 24px 16px; }
+    .price-grid { grid-template-columns: 1fr; }
+    .garantia-grid { grid-template-columns: 1fr; }
+    .timeline-pills { flex-wrap: wrap; justify-content: center; gap: 6px; }
+    .pill-arrow { display: none; }
+    .pill:first-child, .pill:last-child { border-radius: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="eyebrow">Wizoom Play — Aniversário</div>
+    <h1>Oferta de <span>7 Anos</span></h1>
+    <p>Live: quinta-feira, 7 de maio de 2026 &nbsp;·&nbsp; Documento para time comercial e suporte</p>
+
+    <div class="timeline-pills">
+      <div class="pill p-live">🎂 Live ao vivo &nbsp; 07/05/2026</div>
+      <div class="pill-arrow">→</div>
+      <div class="pill p-price">R$ 997 até meia-noite</div>
+    </div>
+  </div>
+
+  <!-- PREÇO -->
+  <div class="section">
+    <div class="section-title">Preço</div>
+
+    <div class="callout">
+      <strong>Argumento central:</strong> o aluno está levando R$ 9.549 em conteúdo por R$ 997 — desconto de 90%. Esse preço existe uma vez por ano, só no aniversário, só até meia-noite da live.
+    </div>
+
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="plabel">Black Friday (referência)</div>
+        <div class="pvalue">R$ 1.297</div>
+        <div class="pnote">Preço base da oferta</div>
+      </div>
+      <div class="price-card main">
+        <div class="plabel">Aniversário — até meia-noite</div>
+        <div class="pvalue">R$ 997</div>
+        <div class="pnote">Só durante a live de quinta-feira</div>
+      </div>
+    </div>
+
+    <div class="alert-bar">
+      Após meia-noite de quinta (07/05), o preço volta automaticamente para R$ 1.297.
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CURSOS -->
+  <div class="section">
+    <div class="section-title">14 cursos inclusos &nbsp;·&nbsp; valor separado: R$ 8.958</div>
+
+    <div class="course-list">
+      <div class="course-item"><span class="ci-num">01</span><span class="ci-name">Lavagem Técnica</span><span class="ci-price">R$ 197</span></div>
+      <div class="course-item"><span class="ci-num">02</span><span class="ci-name">Lavagem de Motor</span><span class="ci-price">R$ 197</span></div>
+      <div class="course-item"><span class="ci-num">03</span><span class="ci-name">Lavagem de Chassi</span><span class="ci-price">R$ 197</span></div>
+      <div class="course-item"><span class="ci-num">04</span><span class="ci-name">Lavagem de Motos</span><span class="ci-price">R$ 197</span></div>
+      <div class="course-item"><span class="ci-num">05</span><span class="ci-name">Polidor de Elite — polimento e vitrificação</span><span class="ci-price">R$ 1.297</span></div>
+      <div class="course-item"><span class="ci-num">06</span><span class="ci-name">Mestre dos Faróis</span><span class="ci-price">R$ 197</span></div>
+      <div class="course-item"><span class="ci-num">07</span><span class="ci-name">Higienização Extrema</span><span class="ci-price">R$ 997</span></div>
+      <div class="course-item"><span class="ci-num">08</span><span class="ci-name">Gestão e Marketing para Estética Automotiva</span><span class="ci-price">R$ 497</span></div>
+      <div class="course-item"><span class="ci-num">09</span><span class="ci-name">10 Maiores Objeções Resolvidas</span><span class="ci-price">R$ 197</span></div>
+      <div class="course-item"><span class="ci-num">10</span><span class="ci-name">Formação em Gestão de Negócios Automotivos</span><span class="ci-price">R$ 2.497</span></div>
+      <div class="course-item"><span class="ci-num">11</span><span class="ci-name">Imersão Estética Automotiva 30K</span><span class="ci-price">R$ 397</span></div>
+      <div class="course-item"><span class="ci-num">12</span><span class="ci-name">PPF Essencial</span><span class="ci-price">R$ 397</span></div>
+      <div class="course-item"><span class="ci-num">13</span><span class="ci-name">PPF em Faróis</span><span class="ci-price">R$ 197</span></div>
+      <div class="course-item"><span class="ci-num">14</span><span class="ci-name">Formação Full PPF</span><span class="ci-price">R$ 1.497</span></div>
+    </div>
+
+    <div class="value-table">
+      <div class="vrow"><span>Valor total dos cursos</span><span class="v">R$ 8.958</span></div>
+      <div class="vrow"><span>Valor total dos bônus</span><span class="v">R$ 591</span></div>
+      <div class="vrow vtotal"><span>Valor total da oferta</span><span class="v">R$ 9.549</span></div>
+      <div class="vrow vprice"><span>Preço aniversário (até meia-noite)</span><span class="v">R$ 997</span></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- BÔNUS -->
+  <div class="section">
+    <div class="section-title">Bônus — todos os compradores ganham &nbsp;·&nbsp; valor: R$ 591</div>
+
+    <div class="card-list">
+      <div class="card">
+        <span class="card-name">Grupo de Networking com outros alunos</span>
+        <span class="card-value">R$ 297</span>
+      </div>
+      <div class="card">
+        <span class="card-name">30 dias de CERA gratuitos</span>
+        <span class="card-value">R$ 197</span>
+      </div>
+      <div class="card">
+        <span class="card-name">Lista de Produtos Essenciais para cada Serviço</span>
+        <span class="card-value">R$ 97</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- TSUNAMI -->
+  <div class="section">
+    <div class="section-title">Tsunami — bônus por velocidade</div>
+
+    <div class="tsunami-note">
+      Acumulativos: quem entra entre os 10 primeiros recebe os três bônus.
+    </div>
+
+    <div class="tsunami-list">
+      <div class="tsunami-item">
+        <span class="tbadge t10">10 primeiros</span>
+        <div class="tcontent">
+          <div class="ttitle">Consultoria individual com o Kevyn</div>
+        </div>
+      </div>
+      <div class="tsunami-item">
+        <span class="tbadge t50">50 primeiros</span>
+        <div class="tcontent">
+          <div class="ttitle">Hotseat com o Widnei</div>
+          <div class="tdesc">Sessão de mentoria ao vivo</div>
+        </div>
+      </div>
+      <div class="tsunami-item">
+        <span class="tbadge t100">100 primeiros</span>
+        <div class="tcontent">
+          <div class="ttitle">Plano 30D</div>
+          <div class="tdesc">Do zero aos R$ 3.000 em 30 dias — trabalhando só no final de semana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- GARANTIAS -->
+  <div class="section">
+    <div class="section-title">Garantias</div>
+
+    <div class="garantia-grid">
+      <div class="gcard">
+        <div class="gtitle">Incondicional — 30 dias</div>
+        <div class="gdesc">Não gostou por qualquer motivo: devolvemos tudo, sem perguntas. Sem burocracia.</div>
+      </div>
+      <div class="gcard">
+        <div class="gtitle">Condicional — 1 ano</div>
+        <div class="gdesc">Assistiu todas as aulas, aplicou o conteúdo e não teve resultado: devolvemos tudo.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- CHECKOUT -->
+  <div class="section">
+    <div class="section-title">Links de Checkout</div>
+
+    <div class="checkout-group">
+      <div class="group-label">Principal — usar na live e na página de venda</div>
+      <div class="co-list">
+        <div class="co-item main">
+          <div class="co-desc">Guru — R$ 997 (aniversário)</div>
+          <a class="co-link" href="https://go.wizoomplay.me/pay/oferta-aniversario-wplay-997" target="_blank">https://go.wizoomplay.me/pay/oferta-aniversario-wplay-997</a>
+          <button class="copy-btn" onclick="copyLink(this,'https://go.wizoomplay.me/pay/oferta-aniversario-wplay-997')">Copiar link</button>
+        </div>
+        <div class="co-item main">
+          <div class="co-desc">Guru — R$ 1.297 (após meia-noite)</div>
+          <a class="co-link" href="https://go.wizoomplay.me/pay/oferta-aniversario-wplay-1297" target="_blank">https://go.wizoomplay.me/pay/oferta-aniversario-wplay-1297</a>
+          <button class="copy-btn" onclick="copyLink(this,'https://go.wizoomplay.me/pay/oferta-aniversario-wplay-1297')">Copiar link</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="checkout-group">
+      <div class="group-label">Alternativos — para quem tiver problema no cartão</div>
+      <div class="co-list">
+        <div class="co-item">
+          <div class="co-desc">TMB — boleto parcelado</div>
+          <a class="co-link" href="https://pay.tmb.com.br/WizoomPlay/C7P2120838L" target="_blank">https://pay.tmb.com.br/WizoomPlay/C7P2120838L</a>
+          <button class="copy-btn" onclick="copyLink(this,'https://pay.tmb.com.br/WizoomPlay/C7P2120838L')">Copiar link</button>
+        </div>
+        <div class="co-item">
+          <div class="co-desc">Zouti — R$ 997</div>
+          <a class="co-link" href="https://pay.zouti.com.br/checkout?poi=prod_offer_vkwf7gtf8smluntby4u013" target="_blank">https://pay.zouti.com.br/checkout?poi=prod_offer_vkwf7gtf8smluntby4u013</a>
+          <button class="copy-btn" onclick="copyLink(this,'https://pay.zouti.com.br/checkout?poi=prod_offer_vkwf7gtf8smluntby4u013')">Copiar link</button>
+        </div>
+        <div class="co-item">
+          <div class="co-desc">Zouti — R$ 1.297</div>
+          <a class="co-link" href="https://pay.zouti.com.br/checkout?poi=prod_offer_nvyvk7hr9jj1h4jx54b1a7" target="_blank">https://pay.zouti.com.br/checkout?poi=prod_offer_nvyvk7hr9jj1h4jx54b1a7</a>
+          <button class="copy-btn" onclick="copyLink(this,'https://pay.zouti.com.br/checkout?poi=prod_offer_nvyvk7hr9jj1h4jx54b1a7')">Copiar link</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- TIME COMERCIAL -->
+  <div class="section">
+    <div class="section-title">Para o time comercial</div>
+
+    <div class="callout">
+      <strong>Argumento de ancoragem:</strong> R$ 9.549 em conteúdo por R$ 997. Desconto de 90%. Uma vez por ano, só no aniversário, só até meia-noite. Não tem como dar errado com a objeção de preço quando o contexto está bem colocado.
+    </div>
+
+    <div class="obj-list">
+      <div class="obj-card">
+        <div class="obj-q">"É muito conteúdo, não vou conseguir aproveitar tudo."</div>
+        <div class="obj-a">Acesso vitalício com atualizações. Não precisa consumir tudo de uma vez. Começa pelo que resolve o problema imediato, seja lavagem, polimento ou gestão.</div>
+      </div>
+      <div class="obj-card">
+        <div class="obj-q">"Estou começando agora, vale a pena pra mim?"</div>
+        <div class="obj-a">Sim. Os cursos de lavagem (R$ 197 cada) já pagam o investimento no primeiro cliente diferenciado. A escola cobre do zero ao avançado.</div>
+      </div>
+      <div class="obj-card">
+        <div class="obj-q">"Prefiro investir esse dinheiro em equipamento."</div>
+        <div class="obj-a">Equipamento sem técnica gera retrabalho. Técnica sem equipamento profissional ainda gera resultado. A ordem certa: conhecimento primeiro.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- SUPORTE -->
+  <div class="section">
+    <div class="section-title">Para o suporte</div>
+
+    <div class="sup-list">
+      <div class="sup-item">
+        <div class="sup-title">Pagamentos alternativos</div>
+        <div class="sup-desc">Se o cartão der problema, direcionar para TMB (boleto parcelado) ou Zouti. Não deixar o lead perder a compra por problema de plataforma.</div>
+      </div>
+      <div class="sup-item">
+        <div class="sup-title">Prazo do preço especial</div>
+        <div class="sup-desc">R$ 997 vale somente até meia-noite de quinta (07/05). Após isso, o link correto passa a ser o de R$ 1.297. Não usar o link errado após meia-noite.</div>
+      </div>
+      <div class="sup-item">
+        <div class="sup-title">Acesso</div>
+        <div class="sup-desc">Liberado automaticamente após confirmação do pagamento. Qualquer problema de acesso: abrir chamado interno com o Eduardo.</div>
+      </div>
+      <div class="sup-item">
+        <div class="sup-title">Garantia incondicional</div>
+        <div class="sup-desc">30 dias. Solicitações dentro do prazo devem ser atendidas sem questionar o motivo. Não há nenhuma exigência para acionar essa garantia.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Wizoom Play &nbsp;·&nbsp; Aniversário 7 Anos &nbsp;·&nbsp; Live 07/05/2026
+  </div>
+
+</div>
+
+<script>
+function copyLink(btn, url) {
+  navigator.clipboard.writeText(url).then(() => {
+    const prev = btn.textContent;
+    btn.textContent = 'Copiado!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = prev;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>

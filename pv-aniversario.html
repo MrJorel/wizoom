@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wizoom Play — Oferta de Aniversário 7 Anos</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111;
+    --surface2: #181818;
+    --border: #222;
+    --orange: #f97316;
+    --orange-dim: rgba(249,115,22,0.1);
+    --green: #22c55e;
+    --green-dim: rgba(34,197,94,0.08);
+    --text: #f0f0f0;
+    --muted: #777;
+    --white: #fff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    line-height: 1.7;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(180deg, #0f0f0f 0%, #0a0a0a 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 72px 20px 64px;
+    text-align: center;
+  }
+  .hero .eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    border: 1px solid rgba(249,115,22,0.3);
+    background: rgba(249,115,22,0.07);
+    padding: 5px 14px;
+    border-radius: 99px;
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    max-width: 780px;
+    margin: 0 auto 20px;
+  }
+  .hero h1 span { color: var(--orange); }
+  .hero .sub {
+    font-size: clamp(15px, 2.5vw, 18px);
+    color: #aaa;
+    max-width: 580px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+  .btn-hero {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-size: 16px;
+    font-weight: 800;
+    padding: 16px 40px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  .btn-hero:hover { opacity: 0.9; transform: translateY(-1px); }
+  .btn-hero .small { display: block; font-size: 11px; font-weight: 600; opacity: 0.7; margin-top: 3px; }
+
+  /* CONTAINER */
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+  /* SECTION */
+  .section { padding: 72px 0; border-bottom: 1px solid var(--border); }
+  .section:last-of-type { border-bottom: none; }
+
+  .section-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .section-body {
+    font-size: 16px;
+    color: #bbb;
+    line-height: 1.75;
+  }
+  .section-body p { margin-bottom: 16px; }
+  .section-body p:last-child { margin-bottom: 0; }
+  .section-body strong { color: var(--text); }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 24px 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    color: #ccc;
+  }
+  .checklist li::before {
+    content: '→';
+    color: var(--orange);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* DIVIDER */
+  .divider-line { border: none; border-top: 1px solid var(--border); }
+
+  /* CALLOUT */
+  .callout {
+    background: var(--orange-dim);
+    border: 1px solid rgba(249,115,22,0.2);
+    border-radius: 10px;
+    padding: 18px 22px;
+    font-size: 15px;
+    color: #ddd;
+    line-height: 1.6;
+    margin: 24px 0;
+  }
+  .callout strong { color: var(--white); }
+
+  /* CURSOS GRID */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .course-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .course-card:hover { border-color: rgba(249,115,22,0.3); }
+  .course-card img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+  }
+  .course-info {
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+  .course-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .course-price { font-size: 12px; color: var(--muted); white-space: nowrap; }
+
+  /* VALUE TABLE */
+  .value-table {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 32px;
+  }
+  .vrow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .vrow:last-child { border-bottom: none; }
+  .vrow.vtotal { background: var(--green-dim); font-weight: 700; font-size: 15px; }
+  .vrow.vtotal .v { color: var(--green); }
+  .vrow.vprice { background: var(--orange-dim); font-weight: 700; font-size: 16px; }
+  .vrow.vprice .v { color: var(--orange); }
+
+  /* BONUS CARDS */
+  .bonus-list { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+  .bonus-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .bonus-content .btitle { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 5px; }
+  .bonus-content .bdesc { font-size: 14px; color: #888; line-height: 1.5; }
+  .bonus-value {
+    font-size: 13px;
+    color: var(--muted);
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  /* GARANTIAS */
+  .garantia-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 32px;
+  }
+  .gcard {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .gcard .gtitle { font-size: 14px; font-weight: 700; color: var(--green); margin-bottom: 8px; }
+  .gcard .gdesc { font-size: 14px; color: #888; line-height: 1.55; }
+
+  /* OBJEÇÕES */
+  .obj-list { display: flex; flex-direction: column; gap: 14px; margin-top: 32px; }
+  .obj-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+  }
+  .obj-q {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 10px;
+    padding-left: 14px;
+    border-left: 3px solid var(--border);
+  }
+  .obj-a { font-size: 15px; color: #ccc; line-height: 1.6; }
+
+  /* PREÇO / CTA BLOCK */
+  .price-block {
+    background: var(--surface);
+    border: 1px solid rgba(249,115,22,0.25);
+    border-radius: 16px;
+    padding: 36px;
+    text-align: center;
+    margin-top: 32px;
+  }
+  .price-block .pb-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+  .price-block .pb-full { font-size: 18px; color: var(--muted); text-decoration: line-through; margin-bottom: 4px; }
+  .price-block .pb-price { font-size: 48px; font-weight: 900; color: var(--orange); line-height: 1; margin-bottom: 6px; }
+  .price-block .pb-parcela { font-size: 15px; color: #999; margin-bottom: 28px; }
+  .btn-cta {
+    display: inline-block;
+    background: var(--orange);
+    color: #000;
+    font-size: 17px;
+    font-weight: 800;
+    padding: 18px 48px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  .btn-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+  .price-block .pb-note { font-size: 12px; color: var(--muted); margin-top: 16px; }
+
+  /* CTA FINAL */
+  .cta-final {
+    background: linear-gradient(135deg, rgba(249,115,22,0.06), rgba(249,115,22,0.02));
+    border-top: 1px solid var(--border);
+    padding: 80px 20px;
+    text-align: center;
+  }
+  .cta-final h2 {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 800;
+    line-height: 1.2;
+    max-width: 680px;
+    margin: 0 auto 16px;
+  }
+  .cta-final h2 span { color: var(--orange); }
+  .cta-final p {
+    font-size: 16px;
+    color: #999;
+    max-width: 520px;
+    margin: 0 auto 36px;
+    line-height: 1.6;
+  }
+  .cta-final .note { font-size: 12px; color: var(--muted); margin-top: 16px; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 28px 20px;
+    font-size: 12px;
+    color: #444;
+    border-top: 1px solid var(--border);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 620px) {
+    .courses-grid { grid-template-columns: 1fr; }
+    .garantia-grid { grid-template-columns: 1fr; }
+    .bonus-card { flex-direction: column; gap: 8px; }
+    .price-block { padding: 28px 20px; }
+    .price-block .pb-price { font-size: 38px; }
+    .hero { padding: 52px 20px 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="eyebrow">Wizoom Play — Aniversário 7 Anos</div>
+  <h1>Em 7 anos, formamos mais de 30.000 profissionais.<br><span>Hoje, abrimos a escola inteira.</span></h1>
+  <p class="sub">14 cursos. Do básico ao avançado. Técnica e gestão. Tudo junto, pelo menor preço do ano.</p>
+  <a href="https://go.wizoomplay.me/pay/oferta-aniversario-wplay-1297" target="_blank" class="btn-hero">
+    Quero entrar na escola — 12x de R$ 129,74
+    <span class="small">ou R$ 1.297 à vista</span>
+  </a>
+</div>
+
+<!-- PARA QUEM É -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-tag">Você está no lugar certo se</div>
+    <div class="section-title">Isso foi feito pra você</div>
+    <ul class="checklist">
+      <li>Você trabalha com estética automotiva e quer cobrar mais pelo seu serviço</li>
+      <li>Você quer montar ou profissionalizar sua estética, mas não sabe por onde começar</li>
+      <li>Você já tem uma operação rodando, mas sente que deixa dinheiro na mesa toda semana</li>
+      <li>Você quer aprender PPF, polimento ou higienização do jeito certo, com quem faz na prática</li>
+    </ul>
+  </div>
+</div>
+
+<!-- WIDNEI -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-tag">Quem é Widnei Eduardo</div>
+    <div class="section-title">Há 16 anos atrás, eu comecei na garagem do meu sogro.</div>
+    <div class="section-body">
+      <p>Sem equipamento profissional. Sem método. Sem dinheiro pra investir em curso. Aprendi tudo na prática — com erro, retrabalho e cliente insatisfeito.</p>
+      <p>Com o tempo, fui descobrindo que a técnica resolve metade do problema. A outra metade é saber cobrar, saber atender, saber crescer.</p>
+      <p>Hoje eu tenho a maior estética da minha região, uma loja de produtos, uma plataforma de gestão usada por centenas de estéticas no Brasil — e uma escola com <strong>mais de 30.000 alunos formados em todo o país</strong>.</p>
+      <p>Não cheguei aqui por sorte. Cheguei porque aprendi o método certo. E é exatamente esse método que está dentro da escola.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEMA -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-tag">O problema</div>
+    <div class="section-title">O maior erro de quem trabalha com estética automotiva.</div>
+    <div class="section-body">
+      <p>Investir anos aprendendo técnica e não dedicar uma hora sequer para aprender a transformar técnica em negócio.</p>
+      <p>Resultado? <strong>Profissional bom de mão, ruim de caixa.</strong></p>
+      <p>Faz um trabalho impecável, cobra R$ 80. O concorrente sem metade da sua habilidade cobra R$ 300 — e o cliente paga sem reclamar.</p>
+      <p>A diferença não é a técnica. É o posicionamento. É o método. É o que você aprende dentro da escola.</p>
+    </div>
+  </div>
+</div>
+
+<!-- A ESCOLA -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-tag">A escola</div>
+    <div class="section-title">A Wizoom Play não é um curso. É a escola completa de estética automotiva.</div>
+    <div class="section-body">
+      <p>Do profissional que está começando na garagem ao empresário que quer escalar a operação. Tudo que você precisa saber — sobre técnica, sobre serviço, sobre precificação, sobre gestão — está aqui dentro.</p>
+    </div>
+
+    <div class="callout">
+      <strong>14 cursos. R$ 8.958 se você fosse comprar separado.</strong><br>
+      No aniversário de 7 anos: R$ 1.297 ou 12x de R$ 129,74.
+    </div>
+
+    <!-- CURSOS -->
+    <div class="courses-grid">
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/1TnO55eH2WE8_ezDqe6PIiFMPy5sTcnzN" alt="Lavagem Técnica" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">01 — Lavagem Técnica</span>
+          <span class="course-price">R$ 197</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/1TMBO1bKZiOc8ThLtpQb4Sd0PZL6vjAhB" alt="Lavagem de Motor" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">02 — Lavagem de Motor</span>
+          <span class="course-price">R$ 197</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/1ctSU9jCGvNuVaJ_SqjF4WcZo3EBuzY1I" alt="Lavagem de Chassi" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">03 — Lavagem de Chassi</span>
+          <span class="course-price">R$ 197</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/1zWUAqnsungp9OrNj2i8MW2PiFeo0EG65" alt="Lavagem de Motos" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">04 — Lavagem de Motos</span>
+          <span class="course-price">R$ 197</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/1GAmb5dKskViTQVAwpKf4UA4IrjBM2JUW" alt="Polidor de Elite" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">05 — Polidor de Elite</span>
+          <span class="course-price">R$ 1.297</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/1YdxesvIcaAGue0Dnq1aMqDCjCxz9yUB-" alt="Mestre dos Faróis" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">06 — Mestre dos Faróis</span>
+          <span class="course-price">R$ 197</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/1hpaq6GXGjdHl7DoIwOA7ISyxhrKJcMES" alt="Higienização Extrema" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">07 — Higienização Extrema</span>
+          <span class="course-price">R$ 997</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/1JAFGy-Ezl6p_gSWrMPVdMLMcpXsiGS4T" alt="Gestão e Marketing" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">08 — Gestão e Marketing</span>
+          <span class="course-price">R$ 497</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/1vFRzSesK4SvXaIn0nzsdB4dHkwtqFIkh" alt="10 Maiores Objeções Resolvidas" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">09 — 10 Maiores Objeções Resolvidas</span>
+          <span class="course-price">R$ 197</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/1DL6GKEXh2RwZ7z_6D_DKta2AajA3baVD" alt="Formação em Gestão de Negócios Automotivos" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">10 — Formação em Gestão de Negócios</span>
+          <span class="course-price">R$ 2.497</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/1Q22bLDhliiixKW9E6dc13egZJdBBr9V8" alt="Imersão Estética Automotiva 30K" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">11 — Imersão Estética Automotiva 30K</span>
+          <span class="course-price">R$ 397</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/10gmOjDRx9MMIBMOqz8V-K4tLLcxSmmd2" alt="PPF Essencial" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">12 — PPF Essencial</span>
+          <span class="course-price">R$ 397</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/12QY_zF6k8MrKqBtV4B7J6ST2Fdvt0Tc-" alt="PPF em Faróis" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">13 — PPF em Faróis</span>
+          <span class="course-price">R$ 197</span>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <img src="https://lh3.googleusercontent.com/d/17D27DR-QF5-OM3iGL_uXON9MNlssfpX9" alt="Formação Full PPF" loading="lazy">
+        <div class="course-info">
+          <span class="course-name">14 — Formação Full PPF</span>
+          <span class="course-price">R$ 1.497</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- VALUE TABLE -->
+    <div class="value-table">
+      <div class="vrow"><span>Valor total dos cursos</span><span class="v">R$ 8.958</span></div>
+      <div class="vrow"><span>Valor total dos bônus</span><span class="v">R$ 591</span></div>
+      <div class="vrow vtotal"><span>Valor total da oferta</span><span class="v">R$ 9.549</span></div>
+      <div class="vrow vprice"><span>Preço de aniversário</span><span class="v">R$ 1.297</span></div>
+    </div>
+
+    <!-- PRICE BLOCK -->
+    <div class="price-block" style="margin-top:32px;">
+      <div class="pb-label">Preço de aniversário — 7 anos</div>
+      <div class="pb-full">R$ 9.549</div>
+      <div class="pb-price">R$ 1.297</div>
+      <div class="pb-parcela">ou 12x de R$ 129,74 no cartão</div>
+      <a href="https://go.wizoomplay.me/pay/oferta-aniversario-wplay-1297" target="_blank" class="btn-cta">Quero entrar na escola agora</a>
+      <div class="pb-note">Acesso imediato após confirmação do pagamento</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- BÔNUS -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-tag">Bônus — todos os compradores ganham</div>
+    <div class="section-title">Além dos 14 cursos, você ainda leva:</div>
+    <div class="bonus-list">
+      <div class="bonus-card">
+        <div class="bonus-content">
+          <div class="btitle">Grupo de Networking com outros alunos</div>
+          <div class="bdesc">Acesso à comunidade de profissionais de estética automotiva. Troca de experiência, indicação de clientes, suporte entre pares.</div>
+        </div>
+        <div class="bonus-value">R$ 297</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-content">
+          <div class="btitle">30 dias de CERA gratuitos</div>
+          <div class="bdesc">A plataforma de gestão usada pelas melhores estéticas do Brasil. 30 dias pra testar sem pagar nada.</div>
+        </div>
+        <div class="bonus-value">R$ 197</div>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-content">
+          <div class="btitle">Lista de Produtos Essenciais para cada Serviço</div>
+          <div class="bdesc">Quais produtos comprar, em qual ordem, pra cada tipo de serviço que você vai oferecer. Sem desperdício, sem erro de iniciante.</div>
+        </div>
+        <div class="bonus-value">R$ 97</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- OBJEÇÕES -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-tag">Dúvidas frequentes</div>
+    <div class="section-title">Respostas diretas para quem ainda está em dúvida.</div>
+    <div class="obj-list">
+      <div class="obj-card">
+        <div class="obj-q">"É muito conteúdo, não vou conseguir absorver tudo."</div>
+        <div class="obj-a">Você tem acesso vitalício com atualizações. Começa pelo que resolve o seu problema agora. O restante fica lá pra quando você precisar.</div>
+      </div>
+      <div class="obj-card">
+        <div class="obj-q">"Estou começando agora, vale a pena pra mim?"</div>
+        <div class="obj-a">Sim. Só os cursos de lavagem já pagam o investimento no primeiro cliente que você atender com mais qualidade. E você vai atender no próximo fim de semana.</div>
+      </div>
+      <div class="obj-card">
+        <div class="obj-q">"Prefiro investir esse dinheiro em equipamento."</div>
+        <div class="obj-a">Equipamento sem técnica gera retrabalho. Técnica sem equipamento profissional ainda gera resultado. A ordem certa é: conhecimento primeiro.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GARANTIAS -->
+<div class="section">
+  <div class="wrap">
+    <div class="section-tag">Garantias</div>
+    <div class="section-title">Você não tem nada a perder.</div>
+    <div class="section-body">
+      <p>Entramos com o risco. Você entra, estuda, e decide se valeu a pena.</p>
+    </div>
+    <div class="garantia-grid">
+      <div class="gcard">
+        <div class="gtitle">Incondicional — 30 dias</div>
+        <div class="gdesc">Entrou, assistiu, não gostou por qualquer motivo: a gente devolve tudo. Sem perguntas, sem burocracia.</div>
+      </div>
+      <div class="gcard">
+        <div class="gtitle">Condicional — 1 ano</div>
+        <div class="gdesc">Seguiu todas as aulas, aplicou o conteúdo e não teve resultado: a gente também devolve. Sem enrolação.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <h2>Essa oferta existe <span>uma vez no ano.</span><br>Só no aniversário.</h2>
+  <p>R$ 9.549 em conteúdo por R$ 1.297. São 14 cursos, 3 bônus e acesso vitalício pra você construir ou profissionalizar sua operação de estética automotiva do jeito certo.</p>
+  <a href="https://go.wizoomplay.me/pay/oferta-aniversario-wplay-1297" target="_blank" class="btn-cta">Entrar na escola — 12x de R$ 129,74</a>
+  <div class="note">ou R$ 1.297 à vista &nbsp;·&nbsp; Acesso imediato &nbsp;·&nbsp; Garantia de 30 dias</div>
+</div>
+
+<footer>
+  Wizoom Play &nbsp;·&nbsp; Aniversário 7 Anos &nbsp;·&nbsp; 2026
+</footer>
+
+</body>
+</html>

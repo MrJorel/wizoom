@@ -144,14 +144,21 @@
   .course-img {
     background: var(--surface2);
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 240px;
+    position: relative;
     border-left: 1px solid var(--border);
+    aspect-ratio: 4/3;
+    flex-shrink: 0;
   }
   .course-card.flip .course-img { border-left: none; border-right: 1px solid var(--border); }
-  .course-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .course-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
 
   /* VALUE TABLE */
   .value-section {
@@ -254,16 +261,72 @@
 
   /* RESPONSIVE */
   @media (max-width: 720px) {
-    .course-card, .course-card.flip { grid-template-columns: 1fr; margin: 0 16px 16px; }
-    .course-card.flip .course-text { order: 2; }
-    .course-card.flip .course-img { order: 1; }
-    .course-img { min-height: 200px; border-left: none !important; border-right: none !important; border-top: 1px solid var(--border); }
-    .course-card.flip .course-img { border-top: none; border-bottom: 1px solid var(--border); }
-    .course-text { padding: 24px 22px; }
-    .bonus-grid { grid-template-columns: 1fr; }
-    .garantia-grid { grid-template-columns: 1fr; }
+    /* Hero */
+    .hero { padding: 52px 20px 48px; }
+    .btn { padding: 16px 28px; font-size: 15px; width: 100%; max-width: 400px; }
+
+    /* Courses — sempre empilhado, imagem em cima */
+    .course-card,
+    .course-card.flip {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      margin: 0 16px 16px;
+    }
+    .course-card .course-img,
+    .course-card.flip .course-img {
+      order: 1;
+      border-left: none !important;
+      border-right: none !important;
+      border-bottom: 1px solid var(--border);
+      border-top: none;
+      aspect-ratio: 16/9;
+    }
+    .course-card .course-text,
+    .course-card.flip .course-text {
+      order: 2;
+      padding: 22px 20px;
+    }
+    .course-title { font-size: 17px; }
+    .course-desc { font-size: 14px; }
+
+    /* Value table */
+    .vrow { padding: 14px 16px; font-size: 14px; flex-wrap: wrap; gap: 4px; }
+    .vrow.vprice .v { font-size: 18px; }
+
+    /* Price block */
     .price-block { padding: 28px 20px; }
     .pb-price { font-size: 40px; }
+    .pb-parcel { font-size: 14px; }
+
+    /* Bonus */
+    .bonus-section { padding: 52px 16px; }
+    .bonus-grid { grid-template-columns: 1fr; }
+
+    /* Garantias */
+    .garantia-section { padding: 52px 16px; }
+    .garantia-grid { grid-template-columns: 1fr; }
+
+    /* Section label */
+    .section-label { padding: 48px 16px 0; }
+
+    /* Courses wrap */
+    .courses { padding: 32px 0 52px; }
+
+    /* Value section */
+    .value-section { padding: 48px 16px; }
+    .value-table { margin: 24px auto 0; }
+
+    /* CTA final */
+    .cta-final { padding: 64px 16px; }
+
+    /* Global text */
+    body { font-size: 15px; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 36px; }
+    .pb-price { font-size: 36px; }
+    .course-card, .course-card.flip { margin: 0 12px 14px; }
   }
 </style>
 </head>
